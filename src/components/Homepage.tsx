@@ -6,7 +6,6 @@ import styles from "@/app/Home.module.css";
 export default function Homepage() {
   const [file, setFile] = useState<File | null>(null);
   const [url, setUrl] = useState<string>("");
-  const [name, setName] = useState<string>("");
   const [isLoading, setIsLoading] = useState<Boolean>(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,24 +28,19 @@ export default function Homepage() {
         method: 'POST',
         body: formData,
       });
-
+      // Handle success, such as updating UI or showing a success message
       if (response.ok) {
         const data = await response.json();
         setUrl(data.videoUrl)
         setIsLoading(false)
         console.log('File uploaded successfully:', data.url);
-        console.log(url);
-        console.log(data);
-        console.log(name);
-
-        // Handle success, such as updating UI or showing a success message
       } else {
-        console.error('Upload failed');
         // Handle error, such as displaying an error message to the user
+        console.error('Upload failed');
       }
     } catch (error) {
-      console.error('Error uploading file:', error);
       // Handle network errors or other exceptions
+      console.error('Error uploading file:', error);
     }
   };
   return (
@@ -62,7 +56,6 @@ export default function Homepage() {
             From bustling cities to pristine beaches, we offer a variety of
             tours and packages to suit every traveler&apos;s taste and budget.
           </p>
-          {/* <button className={styles.exploreButton}>Explore Destinations</button> */}
         </section>
 
         <section className="p-10">
