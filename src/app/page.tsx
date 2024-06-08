@@ -1,60 +1,59 @@
 "use client"
-import Image from "next/image";
-import { useState } from "react";
-import styles from './Home.module.css';
+// import Image from "next/image";
+// import { useState } from "react";
+// import styles from './Home.module.css';
+import Homepage from "@/components/Homepage";
 
 export default function Home() {
-  const [file, setFile] = useState<File | null>(null);
-  const [url, setUrl] = useState<string>("");
-  const [name, setName] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<Boolean>(false);
+  // const [file, setFile] = useState<File | null>(null);
+  // const [url, setUrl] = useState<string>("");
+  // const [name, setName] = useState<string>("");
+  // const [isLoading, setIsLoading] = useState<Boolean>(false);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
-    if (selectedFile) {
-      setFile(selectedFile);
-    }
-  };
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const selectedFile = e.target.files?.[0];
+  //   if (selectedFile) {
+  //     setFile(selectedFile);
+  //   }
+  // };
 
-  const handleUpload = async () => {
-    setIsLoading(true)
-    if (!file) return;
+  // const handleUpload = async () => {
+  //   setIsLoading(true)
+  //   if (!file) return;
 
-    const formData = new FormData();
-    formData.append('inputFile', file);
-    console.log(formData);
+  //   const formData = new FormData();
+  //   formData.append('inputFile', file);
+  //   console.log(formData);
 
-    try {
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
+  //   try {
+  //     const response = await fetch('/api/upload', {
+  //       method: 'POST',
+  //       body: formData,
+  //     });
 
-      if (response.ok) {
-        const data = await response.json();
-        // if (data) {        
-        // }
-        setUrl(data.videoUrl)
-        setIsLoading(false)
-        // console.log(url);
-        console.log('File uploaded successfully:', data.url);
-        console.log(url);
-        console.log(data);
-        console.log(name);
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setUrl(data.videoUrl)
+  //       setIsLoading(false)
+  //       console.log('File uploaded successfully:', data.url);
+  //       console.log(url);
+  //       console.log(data);
+  //       console.log(name);
 
-        // Handle success, such as updating UI or showing a success message
-      } else {
-        console.error('Upload failed');
-        // Handle error, such as displaying an error message to the user
-      }
-    } catch (error) {
-      console.error('Error uploading file:', error);
-      // Handle network errors or other exceptions
-    }
-  };
+  //       // Handle success, such as updating UI or showing a success message
+  //     } else {
+  //       console.error('Upload failed');
+  //       // Handle error, such as displaying an error message to the user
+  //     }
+  //   } catch (error) {
+  //     console.error('Error uploading file:', error);
+  //     // Handle network errors or other exceptions
+  //   }
+  // };
   return (
     <main className='min-h-screen flex-col items-center justify-between p-10'>
-      <div className="">
+      <Homepage />
+      {/* <div className="">
 
         <h1 className="font-bold text-3xl text-blue-700">Wanderlust Travel</h1>
 
@@ -82,32 +81,32 @@ export default function Home() {
             </div>
 
           </div>
-        </section>
+        </section> */}
 
-        <section className="p-10">
+        {/* <section className="p-10">
           <h2 className="font-semibold text-lg">Explore with Us</h2>
           <p>A captivating video showcasing travel experiences</p>
           <div className="flex pt-4 items-center mb-10">
 
-            <input type="file" accept="video/*" onChange={handleFileChange} />
+            <input type="file" accept="video/*" onChange={handleFileChange} /> */}
 
             {/* Space for your video */}
-            {isLoading ? <div className={styles.spinner}></div> : <button className='bg-blue-800 text-white p-2 rounded-md' onClick={handleUpload}>Upload</button>}
+            {/* {isLoading ? <div className={styles.spinner}></div> : <button className='bg-blue-800 text-white p-2 rounded-md' onClick={handleUpload}>Upload</button>}
           </div>
-          <div className={styles.videoWrapper}>
+          <div className={styles.videoWrapper}> */}
             {/* Replace with your video embed or component */}
-            {url &&
+            {/* {url &&
               <video controls>
                 <source id="mp4" src={url} type="video/mp4" />
               </video>
-              }
-          </div>
+              } */}
+          {/* </div>
         </section>
 
         <section className="p-10">
-          <h2 className="font-semibold text-lg">What Our Travelers Say</h2>
+          <h2 className="font-semibold text-lg">What Our Travelers Say</h2> */}
           {/* Add testimonials component here */}
-          <p>Add testimonials from satisfied customers</p>
+          {/* <p>Add testimonials from satisfied customers</p>
         </section>
 
         <section className="p-10">
@@ -115,7 +114,7 @@ export default function Home() {
           <p>Contact us to start planning your unforgettable adventure.</p>
           <button className={styles.contactButton}>Contact Us</button>
         </section>
-      </div>
+      </div> */}
     </main>
   );
 }
