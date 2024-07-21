@@ -62,7 +62,7 @@ export default function Homepage() {
           <h2 className="font-semibold text-lg">Popular Destinations</h2>
           <div className={styles.cardContainer}>
             <div className={styles.card}>
-              <Image
+              <img
                 src="/paris.jpg" // Replace with your destination image
                 alt="Paris"
                 width={300}
